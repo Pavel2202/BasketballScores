@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketballScoresAPI", "BasketballScoresAPI\BasketballScoresAPI.csproj", "{63326829-EB50-4023-8F5A-F7258749632C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63326829-EB50-4023-8F5A-F7258749632C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63326829-EB50-4023-8F5A-F7258749632C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63326829-EB50-4023-8F5A-F7258749632C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63326829-EB50-4023-8F5A-F7258749632C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A378E2F-3408-4ABB-BA7B-A4B298D39195}
+	EndGlobalSection
+EndGlobal
