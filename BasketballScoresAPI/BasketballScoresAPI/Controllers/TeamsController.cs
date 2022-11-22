@@ -42,9 +42,16 @@
         [HttpPost]
         public async Task<IActionResult> CreateTeam(CreateTeamDto teamDto)
         {
-            var team = await _service.CreateTeam(teamDto);
+            try
+            {
+                var team = await _service.CreateTeam(teamDto);
 
-            return Ok(team);
+                return Ok(team);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

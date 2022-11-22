@@ -4,7 +4,6 @@
     using BasketballScoresAPI.Dtos.Request;
     using BasketballScoresAPI.Dtos.Response;
     using BasketballScoresAPI.Helper;
-    using BasketballScoresAPI.Models;
     using BasketballScoresAPI.Services.Interfaces;
     using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +18,11 @@
 
         public async Task<TeamDto> CreateTeam(CreateTeamDto teamDto)
         {
+            if (_context.Teams.Any(t => t.Name == teamDto.Name))
+            {
+                throw new Exception("Team with that name already exists.");
+            }
+
             var team = teamDto.ToTeamEntity();
             await _context.Teams.AddAsync(team);
             await _context.SaveChangesAsync();
