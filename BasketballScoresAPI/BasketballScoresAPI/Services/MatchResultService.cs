@@ -82,7 +82,7 @@
         public async Task<MatchResultDto> GetHighlightMatchResult()
         {
             var matchResult = await _context.MatchResults
-                .OrderByDescending(t => t.HomeTeamScore + t.AwayTeamScore)
+                .OrderByDescending(t => t.TotalScore)
                 .Take(1)
                 .FirstOrDefaultAsync();
 

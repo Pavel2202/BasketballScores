@@ -8,6 +8,10 @@ import { HighlightMatchResultComponent } from './components/matchResults/highlig
 
 const routes: Routes = [
   {
+    path: '',
+    component: TeamsListComponent,
+  },
+  {
     path: 'teams',
     component: TeamsListComponent,
   },

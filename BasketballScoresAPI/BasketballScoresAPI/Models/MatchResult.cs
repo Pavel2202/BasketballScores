@@ -21,5 +21,7 @@
         public Team AwayTeam { get; set; }
 
         public int AwayTeamScore { get; set; }
+
+        public int TotalScore { get; set; }
     }
 }

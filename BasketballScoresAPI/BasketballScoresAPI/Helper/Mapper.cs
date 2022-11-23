@@ -52,6 +52,7 @@
                 HomeTeamScore = homeTeamPoints,
                 AwayTeam = awayTeam,
                 AwayTeamScore = awayTeamPoints,
+                TotalScore = homeTeamPoints + awayTeamPoints
             };
             return matchResult;
         }
