@@ -33,6 +33,11 @@
                 throw new Exception("Away team not found.");
             }
 
+            if (homeTeam.Name.Equals(awayTeam.Name))
+            {
+                throw new Exception("Teams cannot be the same.");
+            }
+
             if (!int.TryParse(matchResultDto.HomeTeamPoints, out int homeTeamPoints))
             {
                 throw new Exception("Home team points are not valid.");

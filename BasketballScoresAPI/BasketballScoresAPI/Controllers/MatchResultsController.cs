@@ -1,7 +1,6 @@
 ﻿namespace BasketballScoresAPI.Controllers
 {
     using BasketballScoresAPI.Dtos.Request;
-    using BasketballScoresAPI.Dtos.Response;
     using BasketballScoresAPI.Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
 

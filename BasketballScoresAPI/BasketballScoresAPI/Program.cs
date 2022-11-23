@@ -9,6 +9,13 @@ builder.Services.AddControllers()
     .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options => options.AddPolicy(name: "BasketballScoresOrigins",
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    }));
 builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<IMatchResultService, MatchResultService>();
 builder.Services.AddDbContext<DataContext>(options =>
@@ -23,6 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("BasketballScoresOrigins");
 
 app.UseHttpsRedirection();
 
