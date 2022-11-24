@@ -4,6 +4,7 @@
     using BasketballScoresAPI.Dtos.Request;
     using BasketballScoresAPI.Dtos.Response;
     using BasketballScoresAPI.Helper;
+    using BasketballScoresAPI.Models;
     using BasketballScoresAPI.Services.Interfaces;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
@@ -20,8 +21,8 @@
 
         public async Task<MatchResultDto> CreateMatchResult(CreateMatchResultDto matchResultDto)
         {
-            var homeTeam = await _context.Teams.FirstOrDefaultAsync(t => t.Name == matchResultDto.HomeTeam);
-            var awayTeam = await _context.Teams.FirstOrDefaultAsync(t => t.Name == matchResultDto.AwayTeam);
+            var homeTeam = await GetHomeTeamByName(matchResultDto.HomeTeam);
+            var awayTeam = await GetAwayTeamByName(matchResultDto.AwayTeam);
 
             if (homeTeam is null)
             {
@@ -68,8 +69,8 @@
 
             foreach (var matchResult in entities)
             {
-                var homeTeam = await _context.Teams.FirstOrDefaultAsync(t => t.Id == matchResult.HomeTeamId);
-                var awayTeam = await _context.Teams.FirstOrDefaultAsync(t => t.Id == matchResult.AwayTeamId);
+                var homeTeam = await GetHomeTeamById(matchResult.HomeTeamId.ToString());
+                var awayTeam = await GetAwayTeamById(matchResult.AwayTeamId.ToString());
                 matchResult.HomeTeam = homeTeam;
                 matchResult.AwayTeam = awayTeam;
 
@@ -86,12 +87,24 @@
                 .Take(1)
                 .FirstOrDefaultAsync();
 
-            var homeTeam = await _context.Teams.FirstOrDefaultAsync(t => t.Id == matchResult.HomeTeamId);
-            var awayTeam = await _context.Teams.FirstOrDefaultAsync(t => t.Id == matchResult.AwayTeamId);
+            var homeTeam = await GetHomeTeamById(matchResult.HomeTeamId.ToString());
+            var awayTeam = await GetAwayTeamById(matchResult.AwayTeamId.ToString());
             matchResult.HomeTeam = homeTeam;
             matchResult.AwayTeam = awayTeam;
 
             return matchResult.ToMatchResultDto();
         }
+
+        private async Task<Team> GetHomeTeamById(string homeTeamId)
+            => await _context.Teams.FirstOrDefaultAsync(t => t.Id.ToString() == homeTeamId);
+
+        private async Task<Team> GetHomeTeamByName(string homeTeamName)
+            => await _context.Teams.FirstOrDefaultAsync(t => t.Name == homeTeamName);
+
+        private async Task<Team> GetAwayTeamById(string awayTeamId)
+            => await _context.Teams.FirstOrDefaultAsync(t => t.Id.ToString() == awayTeamId);
+
+        private async Task<Team> GetAwayTeamByName(string awayTeamName)
+            => await _context.Teams.FirstOrDefaultAsync(t => t.Name == awayTeamName);
     }
 }

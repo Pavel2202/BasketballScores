@@ -4,14 +4,12 @@
   <form method="get">
     <div class="row">
         <div class="form-group col-md-4">
-            <label asp-for="SearchTerm"></label>
-            <input asp-for="SearchTerm" class="form-control" placeholder="Team name...">
+            <input class="form-control" placeholder="Team name...">
         </div>
 
         <div class="form-group col-md-4">
             <div class="form-group">
-                <label asp-for="Sorting"></label>
-                <select asp-for="Sorting" class="form-control">
+                <select class="form-control">
                     <option value="0" selected>Name Ascending</option>
                     <option value="1">Name Descending</option>
                     <option value="2">Points For Ascending</option>
@@ -24,7 +22,7 @@
     </div>
 </form>
 
-  <table class="table">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Name</th>
